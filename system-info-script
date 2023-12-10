@@ -1,0 +1,28 @@
+#!/bin/bash
+
+echo "System Hostname:"
+hostname
+
+echo -e "\nOperating System:"
+lsb_release -d | cut -f 2-
+
+echo -e "\nSystem Uptime:"
+uptime -p
+
+echo -e "\nLinux Kernel Version:"
+uname -r
+
+echo -e "\nGeneral CPU Information:"
+lscpu | grep "Model name:\|CPU(s):"
+
+echo -e "\nMemory Information:"
+free -h
+
+echo -e "\nIP Information:"
+ip -br address
+
+echo -e "\nFilesystem Utilization:"
+df -hT
+
+echo -e "\nLast five lines of log file with 'error' (case-insensitive):"
+grep -i "error" /var/log/syslog | tail -n 5
